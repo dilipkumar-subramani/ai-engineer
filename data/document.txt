@@ -1,0 +1,7 @@
+Home Loan Interest Rate is 8.4%.
+
+Car Loan Interest Rate is 9.2%.
+
+Education Loan Interest Rate is 7.1%.
+
+Personal Loan Interest Rate is 12%.
