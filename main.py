@@ -1,7 +1,21 @@
-from document.reader import read_document
-from document.chunker import chunk_document
+from embedding.embedding_service import EmbeddingService
+from embedding.embedding_provider_resolver import EmbeddingProviderResolver
 
-lines = read_document("data/document.txt")
-chunks = chunk_document(lines, 2)
+def main():
+     # 1. Create resolver
+    resolver = EmbeddingProviderResolver()
 
-print(f"Chunks:{chunks}")
+    # 2. Inject resolver into service
+    service = EmbeddingService(resolver)
+
+    # 3. Create embedding
+    result = service.create_embedding(
+        "banking",
+        "Commercial loan booking document"
+    )
+
+    print(result)
+
+if __name__ == "__main__":
+    main()
+

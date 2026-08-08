@@ -1,6 +1,6 @@
-from provider import EmbeddingProvider
+from .provider import EmbeddingProvider
 
-class OpenAIProvider(EmbeddingProvider):
+class OpenAIEmbeddingProvider(EmbeddingProvider):
 
     def create_embedding(self, chunk):
         print("Using OpenAI Embeddings")

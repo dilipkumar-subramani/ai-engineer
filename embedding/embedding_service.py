@@ -1,21 +1,14 @@
-import random
+from .embedding_provider_resolver import EmbeddingProviderResolver
 
 class EmbeddingService:
 
-    def __init__(self, provider):
-        self.provider = provider
+    def __init__(self, embeddingResolver:EmbeddingProviderResolver):
+        self.providerResolver = embeddingResolver
 
-    def create_embedding(self, chunk: str):
-        if chunk is None:
-            raise ValueError("chunk is not provided!!!") 
+    def create_embedding(self, document_type, text):
+        if text is None:
+            raise ValueError("text is not provided!!!") 
 
-        embeddings = {
-            "id":  random.randint(0, len(chunk)),
-            "text" : chunk,
-            "embedding": [
-                len(chunk),
-                chunk.lower().count("loan"),
-                chunk.lower().count("interest")
-            ]            
-        }
-        return self.provider.create_embedding(self, chunk)
+        provider = self.providerResolver.get_provider(document_type)
+         
+        return provider.create_embedding(text)
