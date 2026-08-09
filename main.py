@@ -9,10 +9,16 @@ def main():
     service = EmbeddingService(resolver)
 
     # 3. Create embedding
-    result = service.create_embedding(
-        "banking",
+    try:
+        result = service.create_embedding(
+        "insurance",
         "Commercial loan booking document"
-    )
+        )
+    except ValueError as e:
+        print(e)
+        return {
+            "error": str(e)
+        }
 
     print(result)
 

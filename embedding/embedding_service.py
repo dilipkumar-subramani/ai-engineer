@@ -12,3 +12,5 @@ class EmbeddingService:
         provider = self.providerResolver.get_provider(document_type)
          
         return provider.create_embedding(text)
+
+    
